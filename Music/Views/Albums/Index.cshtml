@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Albums List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-decoration:none; color:white">
+    <span class="btn btn-danger">@Html.ActionLink("Create New", "Create")</span>
 </p>
 <table class="table">
     <tr>
@@ -40,10 +40,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AlbumID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AlbumID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AlbumID })
+        <td class="btn-group btn-group-sm">
+            <span class="btn btn-success" style="border-radius:6px 0 0 6px">@Html.ActionLink("Edit", "Edit", new { id = item.AlbumID })</span>
+            <span class="btn btn-warning" style="border-radius:0">@Html.ActionLink("Details", "Details", new { id = item.AlbumID })</span>
+            <span class="btn btn-danger" style="border-radius:0 6px 6px 0">@Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })</span> 
         </td>
     </tr>
 }
