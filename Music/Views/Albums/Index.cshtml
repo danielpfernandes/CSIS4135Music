@@ -6,8 +6,8 @@
 
 <h2>Albums List</h2>
 
-<p style="text-decoration:none; color:white">
-    <span class="btn btn-danger">@Html.ActionLink("Create New", "Create")</span>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -41,11 +41,10 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td class="btn-group btn-group-sm">
-            <span class="btn btn-success" style="border-radius:6px 0 0 6px">@Html.ActionLink("Edit", "Edit", new { id = item.AlbumID })</span>
-            <span class="btn btn-warning" style="border-radius:0">@Html.ActionLink("Details", "Details", new { id = item.AlbumID })</span>
-            <span class="btn btn-danger" style="border-radius:0 6px 6px 0">@Html.ActionLink("Delete", "Delete", new { id = item.AlbumID })</span> 
+            @Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }, new {@class="btn btn-success", @style="border-radius:6px 0 0 6px" })
+            @Html.ActionLink("Details", "Details", new { id = item.AlbumID }, new {@class ="btn btn-warning", @style = "border-radius: 0" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }, new {@class="btn btn-danger", @style="border-radius:0 6px 6px 0"}) 
         </td>
     </tr>
 }
-
 </table>

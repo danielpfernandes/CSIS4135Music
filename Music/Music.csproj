@@ -129,6 +129,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -140,6 +142,14 @@
     <Compile Include="Migrations\201603031845212_TitleRequired.cs" />
     <Compile Include="Migrations\201603031845212_TitleRequired.Designer.cs">
       <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603072345234_whatever.cs" />
+    <Compile Include="Migrations\201603072345234_whatever.Designer.cs">
+      <DependentUpon>201603072345234_whatever.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603072356482_whatever2.cs" />
+    <Compile Include="Migrations\201603072356482_whatever2.Designer.cs">
+      <DependentUpon>201603072356482_whatever2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
@@ -188,9 +198,20 @@
     <Content Include="Views\Albums\Details.cshtml" />
     <Content Include="Views\Albums\Edit.cshtml" />
     <Content Include="Views\Albums\Index.cshtml" />
+    <Content Include="Views\Genres\Create.cshtml" />
+    <Content Include="Views\Genres\Delete.cshtml" />
+    <Content Include="Views\Genres\Details.cshtml" />
+    <Content Include="Views\Genres\Edit.cshtml" />
+    <Content Include="Views\Genres\Index.cshtml" />
+    <Content Include="Views\Artists\Create.cshtml" />
+    <Content Include="Views\Artists\Delete.cshtml" />
+    <Content Include="Views\Artists\Details.cshtml" />
+    <Content Include="Views\Artists\Edit.cshtml" />
+    <Content Include="Views\Artists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Browse\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -206,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603031845212_TitleRequired.resx">
       <DependentUpon>201603031845212_TitleRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603072345234_whatever.resx">
+      <DependentUpon>201603072345234_whatever.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603072356482_whatever2.resx">
+      <DependentUpon>201603072356482_whatever2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

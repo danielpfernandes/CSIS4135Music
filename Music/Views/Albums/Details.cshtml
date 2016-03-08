@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p class="btn-group">
-    <span class="btn btn-warning" style="border-radius: 6px 0 0 6px">@Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID })</span>  
-    <span class="btn btn-success" style="border-radius: 0 6px 6px 0">@Html.ActionLink("Back to List", "Index")</span>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumID }, new { @class = "btn btn-primary", @style = "border-radius: 6px 0 0 6px" }) 
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success", @style = "border-radius: 0 6px 6px 0" })
 </p>
