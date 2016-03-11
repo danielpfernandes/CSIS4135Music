@@ -21,6 +21,24 @@ namespace Music.Controllers
             return View(albums.ToList());
         }
 
+        public ActionResult ShowAlbumsByGenre(int ? id)
+        {
+            var albums = db.Albums
+                .Include(a => a.Artist)
+                .Include(a => a.Genre)
+                .Where(a => a.GenreID == id);
+            return View(albums.ToList());
+        }
+
+        public ActionResult ShowAlbumsByArtist(int? id)
+        {
+            var albums = db.Albums
+            .Include(a => a.Artist)
+            .Include(a => a.Genre)
+            .Where(a => a.ArtistID == id);
+            return View(albums.ToList());
+        }
+
         // GET: Albums/Details/5
         public ActionResult Details(int? id)
         {

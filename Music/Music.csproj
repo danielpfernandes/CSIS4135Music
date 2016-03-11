@@ -151,6 +151,10 @@
     <Compile Include="Migrations\201603072356482_whatever2.Designer.cs">
       <DependentUpon>201603072356482_whatever2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603082303499_whatever3.cs" />
+    <Compile Include="Migrations\201603082303499_whatever3.Designer.cs">
+      <DependentUpon>201603082303499_whatever3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -167,6 +171,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
+    <Content Include="apiapp.json" />
+    <None Include="Properties\PublishProfiles\MVCwithDBMusic - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -208,6 +215,9 @@
     <Content Include="Views\Artists\Details.cshtml" />
     <Content Include="Views\Artists\Edit.cshtml" />
     <Content Include="Views\Artists\Index.cshtml" />
+    <Content Include="Views\Genres\Browse.cshtml" />
+    <Content Include="Views\Albums\ShowAlbumsByGenre.cshtml" />
+    <Content Include="Views\Albums\ShowAlbumsByArtist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603072356482_whatever2.resx">
       <DependentUpon>201603072356482_whatever2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603082303499_whatever3.resx">
+      <DependentUpon>201603082303499_whatever3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

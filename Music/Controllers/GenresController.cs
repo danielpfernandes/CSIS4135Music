@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Music.Models;
+using System.Data.Entity.Infrastructure;
 
 namespace Music.Controllers
 {
@@ -39,6 +40,13 @@ namespace Music.Controllers
         public ActionResult Create()
         {
             return View();
+        }
+
+        public ActionResult Browse(int ? id)
+        {
+            var genreAlbum = db.Genres.Include(g => g.Albums).Where(g => g.GenreID == id);
+            var albumGenre = db.Albums.Include(a => a.Title).Where(a => a.GenreID == id);
+            return View(genreAlbum);
         }
 
         // POST: Genres/Create

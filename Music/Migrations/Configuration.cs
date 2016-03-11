@@ -30,12 +30,20 @@ namespace Music.Migrations
             context.Genres.AddOrUpdate(
                 g => g.Name,
                 new Genre { Name = "Disco" },
-                new Genre { Name = "Classical" }
+                new Genre { Name = "Classical" },
+                new Genre { Name = "Rock" },
+                new Genre { Name = "Pop"},
+                new Genre { Name = "Country"},
+                new Genre { Name = "Rap"}
                 );
 
             context.Artists.AddOrUpdate(
                 a => a.Name,
-                new Artist { Name = "Bee Gees" }
+                new Artist { Name = "Bee Gees" },
+                new Artist { Name = "Guns n' Roses" },
+                new Artist { Name = "Wolfgang A Mozart"},
+                new Artist { Name = "JayZ"},
+                new Artist { Name = "Garth Brooks"}
                 );
         }
     }

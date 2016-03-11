@@ -7,7 +7,7 @@
 <h2>Artists List</h2>
 
 <p>
-    @Html.ActionLink("Create New Artist", "Create", null, new {@class = "btn btn-primary" })
+    @Html.ActionLink("Create New Artist", "Create", null, new {@class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -20,7 +20,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "../Albums/ShowAlbumsByArtist", new { id = item.ArtistID }, null)
         </td>
     </tr>
 }
