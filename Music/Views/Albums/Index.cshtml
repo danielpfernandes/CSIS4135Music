@@ -7,9 +7,43 @@
 <h2>Albums List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-primary" })
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
+
+@{ 
+    var grid = new WebGrid(
+        Model, rowsPerPage: 5,
+        defaultSort: "Title",
+        columnNames: new[] { "Title", "Genre", "Artist", "Price" }
+        );
+}
+
+@grid.GetHtml(
+
+    tableStyle: "table",
+    fillEmptyRows: false,
+    mode: WebGridPagerModes.All,
+    columns: grid.Columns(
+        grid.Column("Title", header: "Title"),
+        grid.Column("Artist.Name", header: "Artist"),
+        grid.Column("Genre.Name", header: "Genre"),
+        grid.Column("Price", header: "Price", format: (item) => String.Format("{0:C2}", item.Price)),
+        grid.Column(header: "Actions", format: (item) =>
+        new HtmlString(
+            Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }, new { @class = "btn btn-success", @style = "border-radius:6px 0 0 6px" }).ToString()
+            +
+            Html.ActionLink("Details", "Details", new { id = item.AlbumID }, new { @class = "btn btn-warning", @style = "border-radius: 0" }).ToString()
+            +
+            Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }, new { @class = "btn btn-danger", @style = "border-radius:0 6px 6px 0" }).ToString()
+            )
+
+
+
+        )
+    )
+)
+
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Artist)
@@ -47,4 +81,4 @@
         </td>
     </tr>
 }
-</table>
+</table>*@
