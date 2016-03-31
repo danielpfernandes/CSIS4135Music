@@ -50,8 +50,13 @@ namespace Music.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Artists.Add(artist);
-                db.SaveChanges();
+                if(db.Artists.Any(ac=>ac.Name.Equals(artist.Name))){
+                    ModelState.AddModelError(string.Empty, "Artist already existent!");
+                    return View(artist);
+                } else {
+                    db.Artists.Add(artist);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 

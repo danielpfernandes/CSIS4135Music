@@ -15,10 +15,40 @@ namespace Music.Controllers
         private MusicContext db = new MusicContext();
 
         // GET: Albums
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
+        //    return View(albums.ToList());
+        //}
+
+        public ActionResult Index(string searchString)
         {
+            //var albums = from a in db.Albums
+            //             select a;
+
+
             var albums = db.Albums.Include(a => a.Artist).Include(a => a.Genre);
-            return View(albums.ToList());
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(s => s.Title.Contains(searchString)
+                || s.Genre.Name.Contains(searchString)
+                || s.Artist.Name.Contains(searchString));
+                //return View(albums.ToList());
+            }
+            //else if (!String.IsNullOrEmpty(searchGenre))
+            //{
+            //    albums = albums.Where(s => s.Genre.ToString() == searchString);
+            //    //return View(albums.ToList());
+            //}
+            //else if (!String.IsNullOrEmpty(searchArtist)) {
+
+            //    albums = albums.Where(s => s.Artist.ToString() == searchString);
+            //    //return View(albums);
+            //}
+            
+
+            return View(albums);
         }
 
         public ActionResult ShowAlbumsByGenre(int ? id)
@@ -37,6 +67,40 @@ namespace Music.Controllers
             .Include(a => a.Genre)
             .Where(a => a.ArtistID == id);
             return View(albums.ToList());
+        }
+
+        public ActionResult AddLike(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Album album = db.Albums.Find(id);
+            
+            if (album == null)
+            {
+                return HttpNotFound();
+            }
+            album.Likes++;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AddLikeDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Album album = db.Albums.Find(id);
+
+            if (album == null)
+            {
+                return HttpNotFound();
+            }
+            album.Likes++;
+            db.SaveChanges();
+            return RedirectToAction("Details/"+id);
         }
 
         // GET: Albums/Details/5

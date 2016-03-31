@@ -8,13 +8,22 @@
 
 <p>
     @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+
+    @using (Html.BeginForm(new {@class = "form-inline" }))
+    {
+    <p>
+        Title: @Html.TextBox("SearchString") 
+        <input type="submit" value="Filter" class="btn btn-success"/>
+    </p>
+    }
+    
 </p>
 
 @{ 
     var grid = new WebGrid(
         Model, rowsPerPage: 5,
         defaultSort: "Title",
-        columnNames: new[] { "Title", "Genre", "Artist", "Price" }
+        columnNames: new[] { "Title", "Genre", "Artist", "Price", "Likes" }
         );
 }
 
@@ -27,18 +36,18 @@
         grid.Column("Title", header: "Title"),
         grid.Column("Artist.Name", header: "Artist"),
         grid.Column("Genre.Name", header: "Genre"),
-        grid.Column("Price", header: "Price", format: (item) => String.Format("{0:C2}", item.Price)),
+        grid.Column("Price", header: "Price"/*, format: (item) => String.Format("{0:0.00}", item.Price)*/),
+        grid.Column("Likes", header: "Likes"),
         grid.Column(header: "Actions", format: (item) =>
         new HtmlString(
-            Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }, new { @class = "btn btn-success", @style = "border-radius:6px 0 0 6px" }).ToString()
+            Html.ActionLink("Like", "AddLike", new { id = item.AlbumID }, new { @class = "btn btn-primary", @style = "border-radius:6px 0 0 6px" }).ToString()
+            +
+            Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }, new { @class = "btn btn-success", @style = "border-radius:0" }).ToString()
             +
             Html.ActionLink("Details", "Details", new { id = item.AlbumID }, new { @class = "btn btn-warning", @style = "border-radius: 0" }).ToString()
             +
             Html.ActionLink("Delete", "Delete", new { id = item.AlbumID }, new { @class = "btn btn-danger", @style = "border-radius:0 6px 6px 0" }).ToString()
             )
-
-
-
         )
     )
 )

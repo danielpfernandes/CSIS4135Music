@@ -21,6 +21,7 @@ namespace Music.Models
         [Display(Name = "Artist")]
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
-
+        [Display(Name = "Likes")]
+        public int Likes { get; set; }
     }
 }

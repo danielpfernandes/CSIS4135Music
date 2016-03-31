@@ -58,8 +58,15 @@ namespace Music.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Genres.Add(genre);
-                db.SaveChanges();
+                if (db.Genres.Any(ac => ac.Name.Equals(genre.Name)))
+                {
+                    ModelState.AddModelError(string.Empty, "Genre already existent!");
+                    return View(genre);
+                }
+                else {
+                    db.Genres.Add(genre);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 
