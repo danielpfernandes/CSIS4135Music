@@ -9,10 +9,41 @@
 <p>
     @Html.ActionLink("Create New Artist", "Create", null, new {@class = "btn btn-success" })
 </p>
+
+@*@{
+    var grid = new WebGrid(
+        Model, rowsPerPage: 5,
+        defaultSort: "Name",
+        columnNames: new[] { "Name" }
+        );
+}
+
+@grid.GetHtml(
+
+    tableStyle: "table",
+    fillEmptyRows: false,
+    mode: WebGridPagerModes.All,
+    columns: grid.Columns(
+        grid.Column("Name", header: "Name"),
+        grid.Column(header: "Actions", format: (item) =>
+        new HtmlString(
+            Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }, new { @class = "btn btn-success", @style = "border-radius:6px 0 0 6px" }).ToString()
+            +
+            Html.ActionLink("Details", "Details", new { id = item.ArtistID }, new { @class = "btn btn-warning", @style = "border-radius: 0" }).ToString()
+            +
+            Html.ActionLink("Delete", "Delete", new { id = item.ArtistID }, new { @class = "btn btn-danger", @style = "border-radius:0 6px 6px 0" }).ToString()
+            )
+        )
+    )
+)*@
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Actions
         </th>
         <th></th>
     </tr>
@@ -21,6 +52,11 @@
     <tr>
         <td>
             @Html.ActionLink(item.Name, "../Albums/ShowAlbumsByArtist", new { id = item.ArtistID }, null)
+        </td>
+        <td class="btn-group btn-group-sm">
+            @Html.ActionLink("Edit", "Edit", new { id = item.ArtistID }, new { @class = "btn btn-success", @style = "border-radius:6px 0 0 6px" })
+            @Html.ActionLink("Details", "Details", new { id = item.ArtistID }, new { @class = "btn btn-warning", @style = "border-radius: 0" })
+            @Html.ActionLink("Delete", "Delete", new { id = item.ArtistID }, new { @class = "btn btn-danger", @style = "border-radius:0 6px 6px 0" })
         </td>
     </tr>
 }

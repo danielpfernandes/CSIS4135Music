@@ -132,6 +132,7 @@
     <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PlaylistsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -159,11 +160,36 @@
     <Compile Include="Migrations\201603310106065_musicContinued.Designer.cs">
       <DependentUpon>201603310106065_musicContinued.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603310240036_ArtistBio.cs" />
+    <Compile Include="Migrations\201603310240036_ArtistBio.Designer.cs">
+      <DependentUpon>201603310240036_ArtistBio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603310242037_ArtistBio2.cs" />
+    <Compile Include="Migrations\201603310242037_ArtistBio2.Designer.cs">
+      <DependentUpon>201603310242037_ArtistBio2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603310316308_ArtistRequired.cs" />
+    <Compile Include="Migrations\201603310316308_ArtistRequired.Designer.cs">
+      <DependentUpon>201603310316308_ArtistRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603310339597_PlaylistAlbum.cs" />
+    <Compile Include="Migrations\201603310339597_PlaylistAlbum.Designer.cs">
+      <DependentUpon>201603310339597_PlaylistAlbum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603311713202_PlaylistArtistChanges.cs" />
+    <Compile Include="Migrations\201603311713202_PlaylistArtistChanges.Designer.cs">
+      <DependentUpon>201603311713202_PlaylistArtistChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603311733267_PlaylistArtistChanges2.cs" />
+    <Compile Include="Migrations\201603311733267_PlaylistArtistChanges2.Designer.cs">
+      <DependentUpon>201603311733267_PlaylistArtistChanges2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MusicContext.cs" />
+    <Compile Include="Models\Playlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,6 +203,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="apiapp.json" />
+    <None Include="Properties\PublishProfiles\MusicAppContinued - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MVCwithDBMusic - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -222,6 +249,12 @@
     <Content Include="Views\Genres\Browse.cshtml" />
     <Content Include="Views\Albums\ShowAlbumsByGenre.cshtml" />
     <Content Include="Views\Albums\ShowAlbumsByArtist.cshtml" />
+    <Content Include="Views\Playlists\Create.cshtml" />
+    <Content Include="Views\Playlists\Delete.cshtml" />
+    <Content Include="Views\Playlists\Details.cshtml" />
+    <Content Include="Views\Playlists\Edit.cshtml" />
+    <Content Include="Views\Playlists\Index.cshtml" />
+    <Content Include="Views\Playlists\AddToPlaylist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -253,6 +286,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603310106065_musicContinued.resx">
       <DependentUpon>201603310106065_musicContinued.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310240036_ArtistBio.resx">
+      <DependentUpon>201603310240036_ArtistBio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310242037_ArtistBio2.resx">
+      <DependentUpon>201603310242037_ArtistBio2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310316308_ArtistRequired.resx">
+      <DependentUpon>201603310316308_ArtistRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603310339597_PlaylistAlbum.resx">
+      <DependentUpon>201603310339597_PlaylistAlbum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603311713202_PlaylistArtistChanges.resx">
+      <DependentUpon>201603311713202_PlaylistArtistChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603311733267_PlaylistArtistChanges2.resx">
+      <DependentUpon>201603311733267_PlaylistArtistChanges2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

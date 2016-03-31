@@ -42,6 +42,8 @@
         new HtmlString(
             Html.ActionLink("Like", "AddLike", new { id = item.AlbumID }, new { @class = "btn btn-primary", @style = "border-radius:6px 0 0 6px" }).ToString()
             +
+             Html.ActionLink("Add to Playlist", "../Playlists/AddToPlaylist", new { id = item.AlbumID }, new { @class = "btn btn-danger", @style = "border-radius:0" }).ToString()
+            +
             Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }, new { @class = "btn btn-success", @style = "border-radius:0" }).ToString()
             +
             Html.ActionLink("Details", "Details", new { id = item.AlbumID }, new { @class = "btn btn-warning", @style = "border-radius: 0" }).ToString()

@@ -23,5 +23,6 @@ namespace Music.Models
         public Artist Artist { get; set; }
         [Display(Name = "Likes")]
         public int Likes { get; set; }
+        public virtual List<Playlist> Playlists { get; set; }
     }
 }
