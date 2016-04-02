@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Music.Models.Album>
 
 @{
-    ViewBag.Title = "ShowAlbumsByArtist";
+    ViewBag.Title = "Albums By Artist";
 }
 
 <h2>Albums By Artist</h2>
@@ -49,3 +49,11 @@
 }
 
 </table>
+
+<div>
+    @Html.ActionLink("Back to List", "../Artists/Index", null, new { @class = "btn btn-success" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

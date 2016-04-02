@@ -1,32 +1,16 @@
 ﻿@model Music.Models.Album
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Album";
 }
 
-<h2>Delete</h2>
+<h2>Delete Album</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete @Html.DisplayFor(model => model.Title)?</h3>
 <div>
-    <h4>Album</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Artist.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Genre.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Genre.Name)
-        </dd>
-
+        
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>

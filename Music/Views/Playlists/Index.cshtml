@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<Music.Models.Playlist>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Playlists";
 }
 
-<h2>Index</h2>
+<h2>Playlists</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -20,12 +20,11 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", new { id = item.PlaylistID })
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PlaylistID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PlaylistID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PlaylistID })
+        <td class="btn-group btn-group-sm">
+            @Html.ActionLink("Edit", "Edit", new { id=item.PlaylistID }, new { @class = "btn btn-warning", @style = "border-radius:6px 0 0 6px" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.PlaylistID }, new { @class = "btn btn-danger", @style = "border-radius:0 6px 6px 0" })
         </td>
     </tr>
 }

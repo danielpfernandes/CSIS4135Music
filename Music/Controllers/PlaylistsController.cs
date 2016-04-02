@@ -66,6 +66,7 @@ namespace Music.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Album album = db.Albums.Find(id);
+            Playlist playlist = db.Playlists.Single();
 
 
             if (album == null)
@@ -73,21 +74,24 @@ namespace Music.Controllers
                 return HttpNotFound();
             }
             ViewBag.PlaylistID = new SelectList(db.Playlists, "PlaylistID", "Name");
-
-            return RedirectToAction("Index");
+            
+            return View(playlist);
         }
 
         // POST: Playlists/AddToPlaylist
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddToPlaylist([Bind(Include = "PlaylistID,Name")] Playlist playlist)
+        public ActionResult AddToPlaylist([Bind(Include = "AlbumID")] Playlist playlist, Album album)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(playlist).State = EntityState.Modified;
+                playlist.Albums.Add(album);
+                //db.Playlists.Add(playlist);
+                //db.Entry(playlist).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.PlaylistID = new SelectList(db.Playlists, "PlaylistID", "Name");
             return View(playlist);
         }
 
