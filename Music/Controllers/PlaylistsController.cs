@@ -66,26 +66,33 @@ namespace Music.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Album album = db.Albums.Find(id);
-            Playlist playlist = db.Playlists.Single();
-
 
             if (album == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PlaylistID = new SelectList(db.Playlists, "PlaylistID", "Name");
-            
-            return View(playlist);
+
+            //ViewBag.PlaylistID = new SelectList(db.Playlists, "PlaylistID", "Name");
+            var selection = new SelectList(db.Playlists, "PlaylistID", "Name");
+            ViewBag.PlaylistID = selection;
+            string selectString = selection.ToString();
+            //Playlist playlist = db.Playlists.Include(p => p.Name)
+            //    .Include(p => p.PlaylistID)
+            //    .Single(p => p.Name == selectString);
+            return View();
+
         }
 
         // POST: Playlists/AddToPlaylist
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddToPlaylist([Bind(Include = "AlbumID")] Playlist playlist, Album album)
+        public ActionResult AddToPlaylist([Bind(Include = "Albums")] Playlist playlist, Album album)
         {
             if (ModelState.IsValid)
             {
+                
                 playlist.Albums.Add(album);
+                album.Playlists.Add(playlist);
                 //db.Playlists.Add(playlist);
                 //db.Entry(playlist).State = EntityState.Modified;
                 db.SaveChanges();
@@ -107,6 +114,7 @@ namespace Music.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.AlbumID = new SelectList(db.Albums, "Name", playlist.Albums);
             return View(playlist);
         }
 
@@ -115,7 +123,7 @@ namespace Music.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PlaylistID,Name")] Playlist playlist)
+        public ActionResult Edit([Bind(Include = "PlaylistID,Name,Albums")] Playlist playlist)
         {
             if (ModelState.IsValid)
             {

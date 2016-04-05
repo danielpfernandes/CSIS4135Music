@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201603311733267_PlaylistArtistChanges2.Designer.cs">
       <DependentUpon>201603311733267_PlaylistArtistChanges2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604051804575_minorChanges.cs" />
+    <Compile Include="Migrations\201604051804575_minorChanges.Designer.cs">
+      <DependentUpon>201604051804575_minorChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Artist.cs" />
@@ -195,6 +199,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\musicbg.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -304,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603311733267_PlaylistArtistChanges2.resx">
       <DependentUpon>201603311733267_PlaylistArtistChanges2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604051804575_minorChanges.resx">
+      <DependentUpon>201604051804575_minorChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
